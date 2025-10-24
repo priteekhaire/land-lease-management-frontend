@@ -1,9 +1,15 @@
 export interface Contract {
   id: string;
-  tenantName: string;
-  propertyName: string; // Make sure this exists
-  startDate: string;
-  endDate: string;
-  rentAmount: number;
-  status: 'active' | 'expired' | 'terminated';
+  name: string; // ✅ add this
+  code: string;
+  tenantName:string;
+  propertyName: string;
+  rentAmount:number;
+  type: string;
+  value: number;
+  status: 'draft' | 'active' | 'expired' | 'terminated';
+  startDate?: string;
+  endDate?: string;
+  paymentTerms?: string;
+  terminationNotice?: string;
 }

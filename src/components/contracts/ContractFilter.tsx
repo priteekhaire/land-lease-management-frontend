@@ -1,20 +1,29 @@
-// src/components/contracts/ContractFilters.tsx
-'use client';
-import React from 'react';
+import React from "react";
 
-type ContractFiltersProps = {
-  onFilterChange: (filter: string) => void;
+interface ContractFilterProps {
+  status: string; // ✅ added this
+  onChange: (newStatus: string) => void;
+}
+
+const ContractFilter: React.FC<ContractFilterProps> = ({ status, onChange }) => {
+  return (
+    <div className="flex items-center gap-2 mb-4">
+      <label htmlFor="status" className="font-medium">
+        Filter by Status:
+      </label>
+      <select
+        id="status"
+        value={status}
+        onChange={(e) => onChange(e.target.value)}
+        className="border border-gray-300 rounded-md p-2"
+      >
+        <option value="">All</option>
+        <option value="active">Active</option>
+        <option value="expired">Expired</option>
+        <option value="pending">Pending</option>
+      </select>
+    </div>
+  );
 };
 
-const ContractFilters: React.FC<ContractFiltersProps> = ({ onFilterChange }) => (
-  <div className="flex space-x-4 mb-6">
-    <select onChange={(e) => onFilterChange(e.target.value)} className="p-2 border rounded">
-      <option value="">All Statuses</option>
-      <option value="active">Active</option>
-      <option value="expired">Expired</option>
-      <option value="pending">Pending</option>
-    </select>
-  </div>
-);
-
-export default ContractFilters;
+export default ContractFilter;

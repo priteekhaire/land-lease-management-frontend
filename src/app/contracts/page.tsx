@@ -1,93 +1,43 @@
-// src/pages/contracts.tsx
 'use client';
-import React, { useState, useEffect } from 'react';
-import ContractOverview from '@/components/contracts/ContractOverview';
+import { useContracts } from '@/hooks/useContracts';
 import ContractList from '@/components/contracts/ContractList';
-import ContractFilters from '@/components/contracts/ContractFilter';
-import ContractSearch from '@/components/contracts/ContractSearch';
-import ContractPagination from '@/components/contracts/ContractPagination';
-import { Contract } from '@/types/contract';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-const ContractsPage: React.FC = () => {
-  const [contracts, setContracts] = useState<Contract[]>([]);
-  const [filteredContracts, setFilteredContracts] = useState<Contract[]>([]);
-  const [filter, setFilter] = useState<string>('');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
+export default function ContractsPage() {
+  const { data: contracts, isLoading } = useContracts();
+  const router = useRouter();
+  const [search, setSearch] = useState('');
 
-  // Fetch contracts from API
-  useEffect(() => {
-    const fetchContracts = async () => {
-      try {
-        const response = await fetch('/api/contracts');
-        const data: Contract[] = await response.json();
-        setContracts(data);
-        setFilteredContracts(data);
-        setTotalPages(Math.ceil(data.length / 10));
-      } catch (error) {
-        console.error('Failed to fetch contracts:', error);
-      }
-    };
-
-    fetchContracts();
-  }, []);
-
-  // Apply filter and search query
-  useEffect(() => {
-    let updatedContracts = contracts;
-
-    if (filter) {
-      updatedContracts = updatedContracts.filter(
-        (contract) => contract.status === filter
-      );
-    }
-
-    if (searchQuery) {
-      updatedContracts = updatedContracts.filter(
-        (contract) =>
-          contract.tenantName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          contract.propertyName.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-
-    setFilteredContracts(updatedContracts);
-    setTotalPages(Math.ceil(updatedContracts.length / 10));
-  }, [filter, searchQuery, contracts]);
-
-  const handleFilterChange = (newFilter: string) => {
-    setFilter(newFilter);
-    setCurrentPage(1); // Reset to first page on filter change
-  };
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    setCurrentPage(1); // Reset to first page on search
-  };
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  // Paginate contracts
-  const paginatedContracts = filteredContracts.slice(
-    (currentPage - 1) * 10,
-    currentPage * 10
+  const filteredContracts = contracts?.filter(contract =>
+    contract.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="p-6 space-y-6">
-      <ContractOverview />
-      <ContractFilters onFilterChange={handleFilterChange} />
-      <ContractSearch onSearch={handleSearch} />
-      <ContractList contracts={paginatedContracts} />
-      <ContractPagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
+    <div className="p-6">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-semibold">Contracts</h1>
+        <button
+          onClick={() => router.push('/contracts/new')}
+          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+        >
+          + New Contract
+        </button>
+      </div>
+
+      <input
+        type="text"
+        placeholder="Search contracts..."
+        className="border border-gray-300 rounded-lg px-3 py-2 w-full mb-4"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
+
+      {isLoading ? (
+        <p>Loading contracts...</p>
+      ) : (
+        <ContractList contracts={filteredContracts || []} />
+      )}
     </div>
   );
-};
-
-export default ContractsPage;
+}
