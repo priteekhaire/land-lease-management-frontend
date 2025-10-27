@@ -1,12 +1,14 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
-  output: "export", // required for static export
-  basePath: "/land-lease-management-frontend", // your repo name
-  assetPrefix: "/land-lease-management-frontend/", // also prefix static assets
+  output: "export",
   images: {
-    unoptimized: true, // GitHub Pages doesn’t support Image Optimization
+    unoptimized: true,
   },
+  basePath: isProd ? "/land-lease-management-frontend" : "",
+  assetPrefix: isProd ? "/land-lease-management-frontend/" : "",
 };
 
 export default nextConfig;

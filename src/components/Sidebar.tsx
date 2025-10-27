@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
     { name: 'Equipment', icon: <FaTools />, href: '/Equipment' },
     { name: 'Maintenance', icon: <FaTools />, href: '/Maintenance' },
     { name: 'Financial', icon: <FaMoneyBillWave />, href: '/Financial' },
-    { name: 'Reports', icon: <FaChartBar />, href: '/reports' },
+    { name: 'Reports', icon: <FaChartBar />, href: '/Report' },
   ];
 
   return (

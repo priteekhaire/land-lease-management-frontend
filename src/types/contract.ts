@@ -12,4 +12,5 @@ export interface Contract {
   endDate?: string;
   paymentTerms?: string;
   terminationNotice?: string;
+  
 }
