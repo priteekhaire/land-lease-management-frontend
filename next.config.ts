@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // 👈 enables static export (required for GitHub Pages)
-  basePath: "/land-lease-management-frontend", // 👈 use your repo name here
+  output: "export", // required for static export
+  basePath: "/land-lease-management-frontend", // your repo name
+  assetPrefix: "/land-lease-management-frontend/", // also prefix static assets
   images: {
-    unoptimized: true, // 👈 disables Next.js Image Optimization for static hosting
+    unoptimized: true, // GitHub Pages doesn’t support Image Optimization
   },
-  trailingSlash: true, // 👈 ensures URLs end with '/' (fixes routing on GitHub Pages)
 };
 
 export default nextConfig;
