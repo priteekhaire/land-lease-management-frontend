@@ -7,7 +7,7 @@ export default function NewFarmPage() {
 
   return (
     <div className="p-8">
-      {/* Back button */}
+ 
       <button
         onClick={() => router.push("/farms")}
         className="text-sm text-green-600 hover:underline mb-4"
@@ -15,7 +15,6 @@ export default function NewFarmPage() {
         ← Back to Farms
       </button>
 
-      {/* Title */}
       <h1 className="text-2xl font-bold mb-2">Farm Operations Form</h1>
       <p className="text-gray-500 mb-8">
         Create or edit farm operation details including basic information,
@@ -23,7 +22,7 @@ export default function NewFarmPage() {
       </p>
 
       <form className="space-y-8">
-        {/* Basic Information */}
+        
         <section className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-lg font-semibold mb-4">Basic Information</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -72,7 +71,7 @@ export default function NewFarmPage() {
           </div>
         </section>
 
-        {/* Geographic Information */}
+        
         <section className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-lg font-semibold mb-4">Geographic Information</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -154,7 +153,7 @@ export default function NewFarmPage() {
           </div>
         </section>
 
-        {/* Area Information */}
+      
         <section className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-lg font-semibold mb-4">Area Information</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -201,7 +200,7 @@ export default function NewFarmPage() {
           </div>
         </section>
 
-        {/* Contact Information */}
+       
         <section className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-lg font-semibold mb-4">Contact Information</h2>
           <div className="grid md:grid-cols-2 gap-4">

@@ -43,7 +43,7 @@ export default function AddContactPage() {
 
   return (
     <div className="p-6">
-      {/* Back Button */}
+     
       <button
         onClick={() => router.push('/contacts')}
         className="flex items-center gap-2 border border-gray-300 bg-white px-4 py-2 rounded-lg hover:bg-gray-100 transition"
@@ -51,7 +51,6 @@ export default function AddContactPage() {
         <FaArrowLeft /> Back to Contacts
       </button>
 
-      {/* Header */}
       <div className="mt-6 mb-6">
         <h1 className="text-3xl font-bold">Contact Form</h1>
         <p className="text-gray-500 mt-1">
@@ -63,7 +62,7 @@ export default function AddContactPage() {
         onSubmit={handleSubmit}
         className="space-y-8 bg-gray-50 p-6 rounded-xl border border-gray-200"
       >
-        {/* Basic Information */}
+      
         <div className="bg-white p-6 rounded-xl shadow-sm border">
           <div className="flex items-center gap-2 mb-4">
             <FaUser className="text-gray-500" />
@@ -145,7 +144,7 @@ export default function AddContactPage() {
           </div>
         </div>
 
-        {/* Address Information */}
+     
         <div className="bg-white p-6 rounded-xl shadow-sm border">
           <h2 className="text-lg font-semibold mb-2">Address Information</h2>
           <p className="text-sm text-gray-500 mb-4">Contact address details</p>
@@ -196,7 +195,7 @@ export default function AddContactPage() {
           </div>
         </div>
 
-        {/* Additional Information */}
+        
         <div className="bg-white p-6 rounded-xl shadow-sm border">
           <h2 className="text-lg font-semibold mb-2">Additional Information</h2>
           <p className="text-sm text-gray-500 mb-4">
@@ -243,7 +242,7 @@ export default function AddContactPage() {
           </div>
         </div>
 
-        {/* Submit */}
+       
         <div className="flex justify-end gap-3">
           <button
             type="button"

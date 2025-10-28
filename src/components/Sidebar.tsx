@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaHome, FaTractor, FaUsers, FaMapMarkerAlt, FaFileContract,
-  FaLeaf, FaTools, FaMoneyBillWave, FaChartBar, FaBars, FaTimes, FaLandmark
+  FaTools, FaMoneyBillWave, FaChartBar, FaBars, FaTimes, FaLandmark,
+  FaCalendar, FaCog, FaCrop, FaWrench, FaRegFileAlt
 } from 'react-icons/fa';
 
 const Sidebar: React.FC = () => {
@@ -17,13 +18,15 @@ const Sidebar: React.FC = () => {
     { name: 'Farm Operations', icon: <FaTractor />, href: '/FarmOperations' },
     { name: 'Contacts', icon: <FaUsers />, href: '/contacts' },
     { name: 'Land Parcels', icon: <FaMapMarkerAlt />, href: '/LandParcels' },
-    { name: 'Lease Management', icon: <FaFileContract />, href: '/LeaseManagement' },
+    { name: 'Lease Management', icon: <FaRegFileAlt />, href: '/LeaseManagement' },
     { name: 'Contracts', icon: <FaFileContract />, href: '/contracts' },
-    { name: 'Crops', icon: <FaLeaf />, href: '/Crops' },
-    { name: 'Equipment', icon: <FaTools />, href: '/Equipment' },
+    { name: 'Crops', icon: <FaCrop />, href: '/Crops' },
+    { name: 'Equipment', icon: <FaWrench />, href: '/Equipment' },
     { name: 'Maintenance', icon: <FaTools />, href: '/Maintenance' },
     { name: 'Financial', icon: <FaMoneyBillWave />, href: '/Financial' },
     { name: 'Reports', icon: <FaChartBar />, href: '/Report' },
+    { name: 'Calendar', icon: <FaCalendar />, href: '/Calendar' },
+    { name: 'Settings', icon: <FaCog />, href: '/Settings' },
   ];
 
   return (
@@ -31,14 +34,39 @@ const Sidebar: React.FC = () => {
       animate={{ width: isOpen ? 260 : 80 }}
       className="bg-[#0b1e34] text-white h-screen fixed left-0 top-0 p-4 flex flex-col justify-between shadow-lg z-50 overflow-y-auto"
     >
-      {/* Top Section */}
+ 
       <div>
-        {/* Logo & Toggle */}
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-2">
-            <FaLandmark className="text-green-500 text-2xl" />
-            {isOpen && <h1 className="text-2xl font-bold text-white">LandLease</h1>}
+           
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FaLandmark className="text-green-500 text-2xl" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+              {isOpen && (
+                <motion.h1
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-2xl font-bold text-white"
+                >
+                  LandLease
+                </motion.h1>
+              )}
+            </AnimatePresence>
           </div>
+
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-white text-xl hover:text-green-400 transition-colors"
@@ -47,7 +75,6 @@ const Sidebar: React.FC = () => {
           </button>
         </div>
 
-        {/* Navigation Links */}
         <nav>
           <ul className="space-y-1">
             {menuItems.map((item, idx) => {
@@ -84,7 +111,7 @@ const Sidebar: React.FC = () => {
         </nav>
       </div>
 
-      {/* Bottom Section (optional footer area) */}
+     
       <div className="mt-auto text-center text-gray-500 text-xs">
         <p>© 2025 LandLease</p>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { MapPin, Leaf, Plus, Phone, Mail, Globe, Filter } from "lucide-react";
 
 export default function FarmsPage() {
   const router = useRouter();
@@ -41,30 +42,34 @@ export default function FarmsPage() {
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-8 bg-gray-100 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Farm Operations</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+            <Leaf className="text-green-600 w-7 h-7" /> Farm Operations
+          </h1>
+          <p className="text-gray-500 text-sm mt-1">
+            Manage your farm operations, properties, and areas
+          </p>
+        </div>
         <button
           onClick={() => router.push("/FarmOperations/new")}
-          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
+          className="mt-4 sm:mt-0 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium flex items-center gap-2 shadow-sm transition"
         >
-          + Add Farm
+          <Plus className="w-4 h-4" /> Add Farm
         </button>
       </div>
-      <p className="text-gray-500 mb-6">
-        Manage your farm operations and properties
-      </p>
 
       {/* Search & Filter */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+      <div className="flex flex-col sm:flex-row gap-3 mb-8">
         <input
           type="text"
           placeholder="Search farms..."
-          className="flex-1 border rounded-lg p-2 focus:ring-2 focus:ring-green-500 outline-none"
+          className="flex-1 border border-gray-400 bg-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400 outline-none"
         />
-        <button className="border px-4 py-2 rounded-lg hover:bg-gray-100">
-          Filter
+        <button className="border border-gray-400 bg-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition">
+          <Filter className="w-4 h-4 text-gray-600" /> Filter
         </button>
       </div>
 
@@ -73,56 +78,92 @@ export default function FarmsPage() {
         {farms.map((farm) => (
           <div
             key={farm.id}
-            className="border rounded-xl p-6 bg-white shadow-sm hover:shadow-md transition"
+            className="bg-white border border-gray-400 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all"
           >
-            <div className="flex justify-between items-start">
+            {/* Header */}
+            <div className="flex justify-between items-start mb-3">
               <div>
-                <h2 className="text-lg font-semibold">{farm.name}</h2>
-                <p className="text-gray-500 text-sm">{farm.code}</p>
+                <h2 className="text-xl font-semibold text-gray-800">
+                  {farm.name}
+                </h2>
+                <p className="text-sm text-gray-500">{farm.code}</p>
               </div>
               <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
                 {farm.status}
               </span>
             </div>
 
-            <div className="mt-4 space-y-1 text-sm text-gray-600">
+            {/* Details */}
+            <div className="space-y-2 text-sm text-gray-700">
               <p>
                 <span className="font-medium">Total Area:</span> {farm.area} ha
               </p>
               <p>
                 <span className="font-medium">Type:</span> {farm.type}
               </p>
-              <p>
-                <span className="font-medium">Phone:</span> {farm.phone}
+              <p className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-gray-500" />
+                {farm.phone}
               </p>
-              <p>
-                <span className="font-medium">Email:</span> {farm.email}
+              <p className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-gray-500" />
+                {farm.email}
               </p>
               <a
                 href={farm.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-600 underline"
+                className="flex items-center gap-2 text-green-600 hover:text-green-700 underline"
               >
-                Website
+                <Globe className="w-4 h-4" /> Visit Website
               </a>
             </div>
 
-            {/* Area Breakdown */}
-            <div className="mt-4 border-t pt-3 text-sm text-gray-600">
-              <p className="font-medium mb-1">Area Breakdown</p>
-              <div className="flex flex-wrap gap-2">
-                <span>Arable: {farm.breakdown.arable} ha</span>
-                <span>Grassland: {farm.breakdown.grassland} ha</span>
-                <span>Forest: {farm.breakdown.forest} ha</span>
-                <span className="text-gray-500">
-                  Total: {farm.area} ha
+            {/* Breakdown */}
+            <div className="mt-5 border-t border-gray-300 pt-4 text-sm text-gray-700">
+              <p className="font-medium mb-2 flex items-center gap-1">
+                <MapPin className="w-4 h-4 text-green-600" /> Area Breakdown
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <span className="bg-green-50 border border-gray-300 rounded-md px-3 py-1">
+                  Arable: <span className="font-semibold">{farm.breakdown.arable} ha</span>
+                </span>
+                <span className="bg-green-50 border border-gray-300 rounded-md px-3 py-1">
+                  Grassland: <span className="font-semibold">{farm.breakdown.grassland} ha</span>
+                </span>
+                <span className="bg-green-50 border border-gray-300 rounded-md px-3 py-1">
+                  Forest: <span className="font-semibold">{farm.breakdown.forest} ha</span>
                 </span>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Summary Section */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+        <SummaryCard label="Total Farms" value="2" />
+        <SummaryCard label="Active Farms" value="2" color="text-green-600" />
+        <SummaryCard label="Total Area" value="700.5 ha" color="text-blue-600" />
+        <SummaryCard label="Average Farm Size" value="350 ha" color="text-yellow-600" />
+      </div>
+    </div>
+  );
+}
+
+function SummaryCard({
+  label,
+  value,
+  color = "text-gray-800",
+}: {
+  label: string;
+  value: string;
+  color?: string;
+}) {
+  return (
+    <div className="bg-white border border-gray-400 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all">
+      <p className="text-gray-500 text-sm">{label}</p>
+      <p className={`text-xl font-semibold ${color}`}>{value}</p>
     </div>
   );
 }

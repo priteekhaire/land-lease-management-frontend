@@ -8,7 +8,7 @@ export default function NewReportPage() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      {/* Header */}
+      
       <div className="flex items-center justify-between mb-6">
         <Link href="/reports" className="text-green-600 hover:underline">
           ← Back to Reports
@@ -19,7 +19,7 @@ export default function NewReportPage() {
       <p className="text-gray-500 mb-8">Create or edit report details for analysis and tracking.</p>
 
       <form className="space-y-6 bg-white border rounded-xl p-6 shadow-sm">
-        {/* Basic Info */}
+    
         <div>
           <h2 className="text-lg font-semibold mb-3 text-gray-700">Basic Information</h2>
           <div className="grid grid-cols-2 gap-4">
@@ -40,7 +40,7 @@ export default function NewReportPage() {
           </div>
         </div>
 
-        {/* Date Range */}
+        
         <div>
           <h2 className="text-lg font-semibold mb-3 text-gray-700">Date Range</h2>
           <div className="grid grid-cols-2 gap-4">
@@ -55,7 +55,7 @@ export default function NewReportPage() {
           </div>
         </div>
 
-        {/* Output Format */}
+      
         <div>
           <h2 className="text-lg font-semibold mb-3 text-gray-700">Report Output</h2>
           <div className="grid grid-cols-2 gap-4">
@@ -73,7 +73,7 @@ export default function NewReportPage() {
           </div>
         </div>
 
-        {/* Buttons */}
+       
         <div className="flex justify-end space-x-3 pt-4">
           <button
             type="button"

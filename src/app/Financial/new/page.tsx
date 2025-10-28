@@ -16,7 +16,7 @@ export default function NewTransactionPage() {
       <h1 className="text-2xl font-bold">Add Financial Transaction</h1>
 
       <div className="bg-white shadow rounded-xl p-6 space-y-8">
-        {/* Transaction Details */}
+     
         <section>
           <h2 className="text-lg font-semibold mb-4 border-b pb-2">
             Transaction Details
@@ -78,7 +78,7 @@ export default function NewTransactionPage() {
           </div>
         </section>
 
-        {/* Notes */}
+     
         <section>
           <h2 className="text-lg font-semibold mb-4 border-b pb-2">Notes</h2>
           <textarea
@@ -88,7 +88,7 @@ export default function NewTransactionPage() {
           ></textarea>
         </section>
 
-        {/* Buttons */}
+        
         <div className="flex justify-end gap-4">
           <button
             onClick={() => router.push("/financial")}

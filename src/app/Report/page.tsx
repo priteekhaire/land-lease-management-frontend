@@ -5,22 +5,19 @@ import Link from "next/link";
 export default function ReportsPage() {
   return (
     <div className="p-6">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Reports & Analytics</h1>
           <p className="text-gray-500">Generate and manage reports for your farm operations</p>
         </div>
         <Link
-    href="/Report/new"
-    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
-  >
-    + Create Report
-  </Link>
-
+          href="/Report/new"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
+        >
+          + Create Report
+        </Link>
       </div>
 
-      {/* Top Stats */}
       <div className="grid grid-cols-4 gap-4 mb-6">
         {[
           { title: "Total Reports", value: "24", icon: "📄" },
@@ -28,7 +25,7 @@ export default function ReportsPage() {
           { title: "Downloads", value: "156", icon: "⬇️" },
           { title: "Templates", value: "4", icon: "📊" },
         ].map((item, i) => (
-          <div key={i} className="bg-white border rounded-xl p-4 shadow-sm">
+          <div key={i} className="bg-white border border-gray-400 rounded-xl p-4 shadow-sm">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">{item.icon}</span>
               <div>
@@ -40,7 +37,6 @@ export default function ReportsPage() {
         ))}
       </div>
 
-      {/* Report Cards */}
       <div className="grid grid-cols-2 gap-6">
         {[
           {
@@ -68,7 +64,10 @@ export default function ReportsPage() {
             date: "2024-01-05",
           },
         ].map((report, i) => (
-          <div key={i} className="bg-white border rounded-xl p-5 shadow-sm flex flex-col justify-between">
+          <div
+            key={i}
+            className="bg-white border border-gray-400 rounded-xl p-5 shadow-sm flex flex-col justify-between"
+          >
             <div>
               <h3 className="text-lg font-semibold text-gray-800">{report.title}</h3>
               <p className="text-sm text-gray-500">{report.type}</p>
@@ -79,7 +78,7 @@ export default function ReportsPage() {
               <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
                 📊 Generate
               </button>
-              <button className="bg-gray-100 border px-4 py-2 rounded-lg hover:bg-gray-200">
+              <button className="bg-gray-100 border border-gray-400 px-4 py-2 rounded-lg hover:bg-gray-200">
                 ⬇️ Download
               </button>
             </div>
@@ -87,7 +86,6 @@ export default function ReportsPage() {
         ))}
       </div>
 
-      {/* Recent Reports */}
       <div className="mt-10">
         <h2 className="text-xl font-semibold mb-3">Recent Reports</h2>
         <div className="space-y-3">
@@ -110,7 +108,7 @@ export default function ReportsPage() {
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white border rounded-xl p-4 flex justify-between items-center shadow-sm"
+              className="bg-white border border-gray-400 rounded-xl p-4 flex justify-between items-center shadow-sm"
             >
               <div>
                 <p className="font-medium text-gray-800">{item.title}</p>
@@ -119,7 +117,7 @@ export default function ReportsPage() {
                 </p>
               </div>
               <div className="flex space-x-2">
-                <button className="bg-gray-100 border px-3 py-1.5 rounded hover:bg-gray-200">
+                <button className="bg-gray-100 border border-gray-400 px-3 py-1.5 rounded hover:bg-gray-200">
                   ⬇️
                 </button>
                 <button className="bg-green-600 text-white px-3 py-1.5 rounded hover:bg-green-700">
@@ -131,19 +129,21 @@ export default function ReportsPage() {
         </div>
       </div>
 
-      {/* Bottom Overview */}
       <div className="grid grid-cols-2 gap-6 mt-10">
-        <div className="bg-white border rounded-xl p-5 shadow-sm">
+        <div className="bg-white border border-gray-400 rounded-xl p-5 shadow-sm">
           <h3 className="text-lg font-semibold mb-4">Financial Overview</h3>
           <div className="space-y-2 text-sm">
             <p className="flex justify-between">
-              <span>Total Revenue</span> <span className="text-green-600 font-medium">€45,000</span>
+              <span>Total Revenue</span>{" "}
+              <span className="text-green-600 font-medium">€45,000</span>
             </p>
             <p className="flex justify-between">
-              <span>Total Expenses</span> <span className="text-red-600 font-medium">€28,500</span>
+              <span>Total Expenses</span>{" "}
+              <span className="text-red-600 font-medium">€28,500</span>
             </p>
             <p className="flex justify-between">
-              <span>Net Income</span> <span className="text-blue-600 font-medium">€16,500</span>
+              <span>Net Income</span>{" "}
+              <span className="text-blue-600 font-medium">€16,500</span>
             </p>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
@@ -151,7 +151,7 @@ export default function ReportsPage() {
           </div>
         </div>
 
-        <div className="bg-white border rounded-xl p-5 shadow-sm">
+        <div className="bg-white border border-gray-400 rounded-xl p-5 shadow-sm">
           <h3 className="text-lg font-semibold mb-4">Land Usage Distribution</h3>
           <div className="space-y-2 text-sm">
             <p className="flex justify-between">
