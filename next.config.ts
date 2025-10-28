@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   // When in production, serve from the repo subpath
-  basePath: isProd ? "/land-lease-management-frontend" : "",
-  assetPrefix: isProd ? "/land-lease-management-frontend/" : "",
+  basePath:  "/land-lease-management-frontend" ,
+  assetPrefix:  "/land-lease-dashboard/" ,
   // Helpful for GitHub Pages static exports
   trailingSlash: true,
 };
